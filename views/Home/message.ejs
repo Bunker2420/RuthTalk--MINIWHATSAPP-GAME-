@@ -69,7 +69,6 @@
     
             // Generate a unique tempId for the message
             const tempId = Date.now() + Math.random().toString(36).substring(2);
-    
             // Emit the message with the tempId to the server
             socket.emit('sendMessage', {
                 sender: senderUsername,

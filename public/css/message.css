@@ -111,6 +111,7 @@ body {
     animation: fadeIn 0.5s ease, bounceIn 1s ease;
 }
 
+
 /* Fade-in animation for new messages */
 @keyframes fadeIn {
     0% {
@@ -148,10 +149,13 @@ body {
 /* Received message styling */
 .message-received {
     background-color: #e6e6e6;
-    color: #e6e6e6;
     align-self: flex-start;
     border-radius: 15px 15px 15px 0;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.536);
+}
+
+.message-received p {
+    color: black;
 }
 
 /* Hover effect for messages */
