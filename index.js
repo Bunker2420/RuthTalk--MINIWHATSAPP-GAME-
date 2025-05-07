@@ -102,10 +102,7 @@ app.post('/SignUp',async(req,res)=>{
         });
         let user = await User.register(store,password);
         console.log(user);
-        req.login(user,(err)=>{
-            req.flash('success',"Welcome to Ruthwick Hub");
-            return res.redirect('/chat');    
-        }); 
+        res.render('User/Success.ejs',{username})
     }
     catch(err)
     {

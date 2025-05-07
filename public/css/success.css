@@ -1,0 +1,121 @@
+/* Global Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(45deg, #ff7e5f, #feb47b);
+    background-size: 400% 400%;
+    animation: gradientBackground 15s ease infinite; /* Gradient Animation */
+    text-align: center;
+    padding: 50px;
+    margin: 0;
+}
+
+/* Container Styles */
+.container {
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    margin: 0 auto;
+    animation: slideUp 1s ease-out forwards;
+}
+
+/* Heading Animation */
+h1 {
+    color: #28a745;
+    font-size: 2.5rem;
+    animation: fadeIn 2s ease-in-out;
+}
+
+/* Text Paragraph Styling */
+p {
+    color: #333;
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+/* Flirty Line Styling */
+.flirty-line {
+    color: #ff6347;
+    font-weight: bold;
+    font-style: italic;
+    font-size: 20px;
+    animation: bounceIn 2s ease-in-out;
+}
+
+/* Link Styling */
+a {
+    font-size: 18px;
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Hover Effect for Link */
+a:hover {
+    color: #0056b3;
+    text-decoration: underline;
+    transform: scale(1.1);
+}
+
+/* Keyframe Animations */
+@keyframes slideUp {
+    from {
+        transform: translateY(30px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes bounceIn {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+    60% {
+        transform: scale(1.1);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes gradientBackground {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px;
+        max-width: 90%;
+    }
+    h1 {
+        font-size: 2rem;
+    }
+    p, .flirty-line {
+        font-size: 16px;
+    }
+}
