@@ -1,0 +1,171 @@
+/* Loader */
+#loader {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    z-index: 9999;
+}
+
+.loader-ring {
+    width: 60px;
+    height: 60px;
+    border: 8px solid #ffffff50;
+    border-top: 8px solid #fff;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+.loading-text {
+    margin-top: 20px;
+    font-size: 18px;
+    color: white;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Page Base */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+    color: #ffffff;
+    overflow: hidden;
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Header */
+header {
+    text-align: center;
+    padding: 25px 0;
+    font-size: 30px;
+    font-weight: bold;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(5px);
+    width: 100%;
+    z-index: 10;
+}
+
+/* Container */
+.container {
+    position: relative;
+    z-index: 10;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(5px);
+    margin-top: 30px;
+    text-align: center;
+}
+
+/* Instructions */
+.instructions {
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+/* Input & Buttons */
+input {
+    padding: 12px;
+    font-size: 18px;
+    width: 250px;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+    margin: 15px 0;
+    background-color: #ffffff10;
+    color: white;
+}
+
+button {
+    padding: 12px 24px;
+    font-size: 18px;
+    background: linear-gradient(to right, #ff4e50, #f9d423);
+    color: #000;
+    border: none;
+    border-radius: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 20px rgba(255, 255, 255, 0.2);
+}
+
+#message {
+    margin-top: 20px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+#score {
+    font-size: 18px;
+    margin-top: 10px;
+    color: #f9d423;
+}
+
+/* Back Button */
+.back-btn {
+    display: inline-block;
+    margin-top: 40px;
+    color: #ffffff;
+    background: #ff4e50;
+    padding: 10px 16px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s ease;
+}
+
+.back-btn:hover {
+    background: #f9d423;
+    color: #000;
+}
+
+/* Floating Particles (Bubbles) */
+.particles-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.particle {
+    position: absolute;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0) 70%);
+    border-radius: 50%;
+    opacity: 0.6;
+    animation: float 10s linear infinite;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(100vh) scale(0.5);
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-10vh) scale(1.2);
+        opacity: 0;
+    }
+}

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Username Not Found</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+            animation: backgroundAnimation 5s infinite alternate;
+        }
+
+        h1 {
+            color: #ff4d4d;
+            font-size: 3em;
+            text-align: center;
+            animation: slideIn 1s ease-out;
+        }
+
+        p {
+            font-size: 1.2em;
+            color: #333;
+            text-align: center;
+            animation: fadeIn 1s ease-out;
+            margin-top: 20px;
+            line-height: 1.5;
+            font-weight: bold;
+        }
+
+        a {
+            color: #1e90ff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        button {
+            background-color: #1e90ff;
+            color: white;
+            border: none;
+            height: 50px;
+            width: 100px;
+            font-size: 1.1em;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            margin: auto 47%;
+        }
+
+        button:hover {
+            background-color: #3a8dff;
+            transform: scale(1.1);
+        }
+
+        button:active {
+            background-color: #1c70d1;
+            transform: scale(1);
+        }
+
+        /* Animation for background */
+        @keyframes backgroundAnimation {
+            0% {
+                background-color: #f7f7f7;
+            }
+
+            100% {
+                background-color: #ffd1dc;
+            }
+        }
+
+        /* Slide-in animation for title */
+        @keyframes slideIn {
+            from {
+                transform: translateY(-100px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* Fade-in animation for paragraph */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h1> Status : <%= status %></h1>
+        <p><%= message  %></p>
+        <form action="/login">
+            login
+        </form>
+    </div>
+</body>
+</html>

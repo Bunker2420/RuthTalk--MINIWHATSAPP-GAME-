@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup Form</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <div class="wrapper">
+        <form action="/SignUp" method="POST">
+            <h1>Signup</h1>
+            <% if (success_msg && success_msg.length) { %>
+                <div class="flash success">
+                  <span><%= success_msg %></span>
+                  <button class="close-btn" onclick="this.parentElement.style.display='none'">
+                    <i class="fas fa-times"></i>
+                  </button>
+                </div>
+              <% } %>
+            
+             <!--Listing does not exist flash-->
+             <% if (error_msg && error_msg.length) { %>
+              <div class="flash error">
+                <span><%= error_msg %></span>
+                <button class="close-btn" onclick="this.parentElement.style.display='none'">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+            <% } %>
+            <div class="input-box">
+                <input type="text" name="username" placeholder="Username" required>
+                <i class='bx bxs-user'></i>
+            </div>
+            <div class="input-box">
+                <input type="email" name="email" placeholder="Email" required pattern="[a-zA-Z0-9._%+-]+@gmail\.com" title="Email must be a valid Gmail address">
+                <i class='bx bxs-envelope'></i>
+            </div>
+            <div class="input-box">
+                <input type="password" name="password" placeholder="Password" required minlength="7"
+                pattern="(?=.*[!@#$%^&*(),.?\")>         
+                <i class='bx bxs-lock-alt'></i>
+            </div>
+            <div class="remember-forget">
+                <label><input type="checkbox"> I agree to the terms & conditions</label>
+            </div>
+            <button type="submit" class="btn">Signup</button>
+            <div class="register-link">
+                <p>Already have an account? <a href="/login">Login</a></p>
+            </div>
+        </form>
+    </div>   
+    <script>
+        setTimeout(() => {
+    const flashMessages = document.querySelectorAll('.flash');
+    flashMessages.forEach(flash => {
+      flash.style.transition = "opacity 0.5s ease";
+      flash.style.opacity = "0";
+      setTimeout(() => {
+        flash.remove(); // Optional: fully remove after fade out
+      }, 500);
+    });
+  }, 10000); 
+    </script>
+</body>
+</html>

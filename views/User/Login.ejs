@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <div class="wrapper">
+        <form action="/login" method="POST">
+            <h1>Login</h1>
+            <% if (success_msg && success_msg.length) { %>
+                <div class="flash success">
+                  <span><%= success_msg %></span>
+                  <button class="close-btn" onclick="this.parentElement.style.display='none'">
+                    <i class="fas fa-times"></i>
+                  </button>
+                </div>
+              <% } %>
+            
+             <!--Listing does not exist flash-->
+             <% if (error_msg && error_msg.length) { %>
+              <div class="flash error">
+                <span><%= error_msg %></span>
+                <button class="close-btn" onclick="this.parentElement.style.display='none'">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+            <% } %>
+            <div class="input-box">
+                <input type="text" placeholder="Username" name="username" required autocomplete="username">
+                <i class='bx bxs-user'></i>
+            </div>
+            <div class="input-box">
+                <input type="password" placeholder="Password" name="password" required autocomplete="current-password">
+                <i class='bx bxs-lock-alt'></i>
+            </div>
+            <div class="remember-forget">
+                <label><input type="checkbox" name="remember" required> Remember me</label>
+                <a href="https://chatgpt.com/">Forgot Password?</a>
+            </div>
+            <button type="submit" class="btn">Login</button>
+            <div class="register-link">
+                <p>Don't have an account? <a href="/SignUp">Register</a></p>
+            </div>
+        </form>
+    </div>   
+    <script>
+        setTimeout(() => {
+    const flashMessages = document.querySelectorAll('.flash');
+    flashMessages.forEach(flash => {
+      flash.style.transition = "opacity 0.5s ease";
+      flash.style.opacity = "0";
+      setTimeout(() => {
+        flash.remove(); // Optional: fully remove after fade out
+      }, 500);
+    });
+  }, 10000); 
+    </script>
+</body>
+</html>

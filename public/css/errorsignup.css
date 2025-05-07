@@ -1,0 +1,79 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body Styling */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8d7da;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Error Container Styling */
+.error-container {
+    text-align: center;
+    background: #fff;
+    padding: 50px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 400px;
+    animation: fadeIn 2s ease-in-out;
+}
+
+/* Heading Styling */
+h1 {
+    font-size: 2rem;
+    color: #dc3545;
+    margin-bottom: 20px;
+    animation: fadeInUp 1s ease-out;
+}
+
+/* Message Styling */
+.message {
+    font-size: 1.1rem;
+    color: #721c24;
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+/* "OR" Styling */
+.or {
+    font-size: 1.1rem;
+    color: #6c757d;
+    margin: 10px 0;
+}
+
+/* Retry Button Styling */
+.retry-button {
+    display: inline-block;
+    padding: 12px 30px;
+    font-size: 1.2rem;
+    text-decoration: none;
+    background-color: #dc3545;
+    color: white;
+    border-radius: 30px;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    animation: fadeInUp 1.5s ease-out;
+}
+
+.retry-button:hover {
+    background-color: #c82333;
+    transform: scale(1.1);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}

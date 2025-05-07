@@ -1,0 +1,293 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body Styling */
+body {
+    height: 100vh;
+    font-family: 'Poppins', sans-serif;
+    overflow: hidden;
+    background: linear-gradient(-45deg, #0f0c29, #302b63, #24243e, #ff5f6d);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+/* Gradient Animation */
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Game Container */
+.game-container {
+    position: relative;
+    width: 800px;
+    height: 300px;
+    background: transparent;
+    border: 2px solid white;
+    overflow: hidden;
+}
+
+/* Dino */
+.dino {
+    width: 60px;
+    height: 60px;
+    position: absolute;
+    bottom: 50px;
+    left: 50px;
+    background: url('/css/Tyrannosaurus-rex.jpg') no-repeat center/cover;
+}
+
+/* Jump animation */
+.jump {
+    animation: jump 600ms ease-out;
+}
+
+@keyframes jump {
+    0% { bottom: 50px; }
+    50% { bottom: 160px; }
+    100% { bottom: 50px; }
+}
+
+/* Obstacle */
+.obstacle {
+    width: 40px;
+    height: 60px;
+    position: absolute;
+    bottom: 50px;
+    right: 0;
+    background: url('/images/obstacles.pn') no-repeat center/cover;
+    animation: moveObstacle 2s linear infinite;
+}
+
+@keyframes moveObstacle {
+    0% { right: -60px; }
+    100% { right: 100%; }
+}
+
+/* Ground Line */
+.ground {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 10px;
+    background-color: white;
+}
+
+/* Score Display */
+.score-container {
+    margin-top: 20px;
+    font-size: 20px;
+    color: #f9d423;
+    text-shadow: 0 0 5px #fff;
+}
+
+/* Restart Button */
+.restart-btn {
+    margin-top: 20px;
+    padding: 12px 24px;
+    font-size: 18px;
+    background: linear-gradient(to right, #ff4e50, #f9d423);
+    color: #000;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    display: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+}
+
+.restart-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 25px rgba(255, 255, 255, 0.6);
+}
+
+/* Pause Button Style */
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body Styling */
+body {
+    height: 100vh;
+    font-family: 'Poppins', sans-serif;
+    overflow: hidden;
+    background: linear-gradient(-45deg, #0f0c29, #302b63, #24243e, #ff5f6d);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+/* Gradient Animation */
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Game Container */
+.game-container {
+    position: relative;
+    width: 800px;
+    height: 300px;
+    background: transparent;
+    border: 2px solid white;
+    overflow: hidden;
+}
+
+/* Dino */
+.dino {
+    width: 60px;
+    height: 60px;
+    position: absolute;
+    bottom: 50px;
+    left: 50px;
+    background: url('/images/Tyrannosaurus-rex.jpg') no-repeat center/cover;
+}
+
+/* Jump animation */
+.jump {
+    animation: jump 600ms ease-out;
+}
+
+@keyframes jump {
+    0% { bottom: 50px; }
+    50% { bottom: 160px; }
+    100% { bottom: 50px; }
+}
+
+/* Obstacle */
+.obstacle {
+    width: 40px;
+    height: 60px;
+    position: absolute;
+    bottom: 50px;
+    right: 0;
+    background: url('/images/obstacles.png') no-repeat center/cover;
+    animation: moveObstacle 2s linear infinite;
+}
+
+@keyframes moveObstacle {
+    0% { right: -60px; }
+    100% { right: 100%; }
+}
+
+/* Ground Line */
+.ground {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 10px;
+    background-color: white;
+}
+
+/* Score Display */
+.score-container {
+    margin-top: 20px;
+    font-size: 20px;
+    color: #f9d423;
+    text-shadow: 0 0 5px #fff;
+}
+
+/* Restart Button */
+.restart-btn {
+    margin-top: 20px;
+    padding: 12px 24px;
+    font-size: 18px;
+    background: linear-gradient(to right, #ff4e50, #f9d423);
+    color: #000;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    display: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+}
+
+.restart-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 25px rgba(255, 255, 255, 0.6);
+}
+
+/* Align Buttons below Game Container */
+.buttons-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.pause-btn, .resume-btn, .restart-btn {
+    margin: 5px;
+    padding: 12px 24px;
+    font-size: 18px;
+    background: linear-gradient(to right, #36d1dc, #5b86e5);
+    border: none;
+    color: white;
+    border-radius: 14px;
+    cursor: pointer;
+    box-shadow: 0 0 15px rgba(86, 204, 242, 0.6);
+    transition: 0.3s ease;
+}
+
+.pause-btn:hover, .resume-btn:hover, .restart-btn:hover {
+    transform: scale(1.1);
+    background: linear-gradient(to right, #5b86e5, #36d1dc);
+    box-shadow: 0 0 20px rgba(86, 204, 242, 0.9);
+}
+
+/* Pause Button Style */
+.pause-btn {
+    background: linear-gradient(to right, #36d1dc, #5b86e5);
+    padding: 10px 18px;
+    font-size: 18px;
+}
+
+/* Resume Button Style */
+.resume-btn {
+    background: linear-gradient(to right, #36d1dc, #5b86e5);
+    padding: 10px 18px;
+    font-size: 18px;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 800px) {
+    .buttons-container {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+header {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .beta-note {
+    font-size: 1.1rem;
+    font-weight: normal;
+    color: #ffcc00;
+    margin-top: 5px;
+  }
+  
+  .info-message {
+    font-size: 0.95rem;
+    color: #ccc;
+    margin-top: 8px;
+    line-height: 1.4;
+  }
+  

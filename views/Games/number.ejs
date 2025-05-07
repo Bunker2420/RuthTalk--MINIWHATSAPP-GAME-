@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Number Guessing Game</title>
+  <link rel="stylesheet" href="/css/number.css">
+</head>
+<body>
+  <div id="loader">
+    <div class="loader-ring"></div>
+    <div class="loading-text">Loading...</div>
+  </div>
+
+  <header>🎯 Number Guessing Game</header>
+
+  <!-- Removed Emoji Background Section -->
+  <div class="particles-bg" id="particles-container"></div>
+
+  <div class="container">
+    <p class="instructions">Guess a number between 1 and 100</p>
+
+    <input type="number" id="guessInput" placeholder="Enter your guess" />
+    <button id="guessBtn">Guess</button>
+    <p id="message"></p>
+    <p id="score">Score: 0</p>
+
+    <a href="/games" class="back-btn">🔙 Back to Games</a>
+  </div>
+
+  <script src="/js/number.js"></script>
+</body>
+</html>

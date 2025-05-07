@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Rock Paper Scissors</title>
+    <link rel="stylesheet" href="/css/rps.css">
+</head>
+<body>
+    <div class="emoji-bg"></div>
+
+    <div class="game-container">
+        <h1>👊 Rock Paper Scissors ✋✌️</h1>
+
+        <div class="score-board">
+            <div>👤 You: <span id="user-score">0</span></div>
+            <div>🤖 Computer: <span id="computer-score">0</span></div>
+        </div>
+
+        <div class="choices">
+            <button onclick="play('rock')">🪨 Rock</button>
+            <button onclick="play('paper')">📄 Paper</button>
+            <button onclick="play('scissors')">✂️ Scissors</button>
+        </div>
+
+        <div id="loading">🌀 Thinking...</div>
+
+        <div class="results">
+            <p id="user-choice"></p>
+            <p id="computer-choice"></p>
+            <p id="result"></p>
+        </div>
+
+        <a class="back-btn" href="/games">⬅️ Back to Games</a>
+    </div>
+
+    <script src="/js/rps.js"></script>
+</body>
+</html>

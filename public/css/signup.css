@@ -1,0 +1,71 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body Styling */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Container Styling */
+.container {
+    text-align: center;
+    background: #fff;
+    padding: 50px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 400px;
+    animation: fadeIn 2s ease-in-out;
+}
+
+/* Heading Styling */
+h1 {
+    font-size: 2rem;
+    color: #4CAF50;
+    margin-bottom: 20px;
+    animation: fadeInUp 1s ease-out;
+}
+
+/* Paragraph Styling */
+p {
+    font-size: 1.1rem;
+    color: #333;
+    margin-bottom: 40px;
+}
+
+/* Button Styling */
+.login-button {
+    display: inline-block;
+    padding: 12px 30px;
+    font-size: 1.2rem;
+    text-decoration: none;
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 30px;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    animation: fadeInUp 1.5s ease-out;
+}
+
+.login-button:hover {
+    background-color: #45a049;
+    transform: scale(1.1);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat with <%= recusername %></title>
+    <link rel="stylesheet" href="/css/message.css"> <!-- Linking to the external CSS file -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+
+    <div id="chat-container">
+        <div style="display: flex; justify-content: space-between;">
+            <div><h2>Chat with <%= recusername %> <form action="/chat"></form></div>
+            <div><form action="/chat"><button style="margin-top: 13px;">Back<i class="fa-solid fa-backward-step"></i></button></form></div>
+        </div>
+        <div id="chat-history">
+            <% chatHistory.forEach(message => { %>
+                <div class="message <%= message.Sender === senderUsername ? 'message-sent' : 'message-received' %>">
+                    <p style="color: black;"> <strong><%= message.Sender %>:</strong> <%= message.message %></p>
+                    <p style="color: black;"><small><%= message.TimeStamp.toLocaleString() %></small></p>
+                </div>
+            <% }); %>
+        </div>
+
+        <!-- Bubble animations -->
+        <div class="bubble" style="top: 10%; left: 20%;"></div>
+        <div class="bubble" style="top: 30%; left: 50%;"></div>
+        <div class="bubble" style="top: 50%; left: 80%;"></div>
+        <div class="bubble" style="top: 70%; left: 10%;"></div>
+        <!-- Add more bubbles as needed -->
+
+        <!-- Message input and send button -->
+
+        <!-- Message input and send button -->
+        <form id="message-form" action="" method="POST">
+            <textarea id="message" placeholder="Type a message..." rows="3"></textarea>
+            <button type="submit">Send</button>
+        </form>
+    </div>
+    <div class="particles">
+        <!-- Particle elements will be dynamically created here -->
+    </div>
+    
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        const socket = io();  // Connect to the server
+    
+        // Fetch sender and receiver from localStorage
+        const senderUsername = localStorage.getItem('senderUsername');
+        const receiverUsername = localStorage.getItem('receiverUsername');
+    
+        // Register the username
+        if (senderUsername) {
+            socket.emit('register', senderUsername);
+            socket.emit('username', senderUsername);
+        }
+    
+        // Handle message sending
+        const form = document.getElementById('message-form');
+        const messageInput = document.getElementById('message');
+    
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+    
+            const message = messageInput.value.trim();
+            if (!message) return;
+    
+            // Generate a unique tempId for the message
+            const tempId = Date.now() + Math.random().toString(36).substring(2);
+    
+            // Emit the message with the tempId to the server
+            socket.emit('sendMessage', {
+                sender: senderUsername,
+                receiver: receiverUsername,
+                message: message,
+                tempId: tempId
+            });
+    
+            // Show the message in the chat temporarily with "Sending..." status
+            const messageContainer = document.createElement('div');
+            messageContainer.classList.add('message', 'message-sent');
+            messageContainer.innerHTML = `<p><strong>${senderUsername}:</strong> ${message}</p><p><small>Sending...</small></p>`;
+            messageContainer.setAttribute('data-temp-id', tempId); // Store the tempId for later use
+            document.getElementById('chat-history').appendChild(messageContainer);
+    
+            // Clear input and focus back
+            messageInput.value = '';
+            messageInput.focus();
+    
+            // Auto-scroll
+            document.getElementById('chat-history').scrollTop = document.getElementById('chat-history').scrollHeight;
+        });
+    
+        // Receive messages from the server (for the receiver side)
+        socket.on('receiveMessage', (data) => {
+            const { sender, message, TimeStamp } = data;
+            const messageContainer = document.createElement('div');
+            messageContainer.classList.add('message', 'message-received');
+            messageContainer.innerHTML = `<p><strong>${sender}:</strong> ${message}</p><p><small>${new Date(TimeStamp).toLocaleString()}</small></p>`;
+            document.getElementById('chat-history').appendChild(messageContainer);
+    
+            // Auto-scroll to the bottom
+            document.getElementById('chat-history').scrollTop = document.getElementById('chat-history').scrollHeight;
+        });
+    
+        // Listen for the message status to update the sender's message status
+        socket.on('messageStatus', (data) => {
+            const { status, message, tempId } = data;
+    
+            // Find the message with the matching tempId and update its status
+            const sendingMessage = document.querySelector(`[data-temp-id="${tempId}"]`);
+            if (sendingMessage) {
+                const statusElement = sendingMessage.querySelector('small');
+                if (statusElement) {
+                    statusElement.textContent = "Sent"; // Update the status text
+                    statusElement.style.color = "green"; // Change text color to green
+                }
+            }
+        });
+    </script>    
+
+</body>
+</html>

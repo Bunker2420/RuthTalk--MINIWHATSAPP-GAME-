@@ -1,0 +1,163 @@
+/* General Body and Game Styles */
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background: linear-gradient(45deg, #ff6a00, #ffcc00);
+    animation: backgroundAnimation 5s infinite alternate;
+}
+
+.game-container {
+    text-align: center;
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    width: 300px;
+}
+
+h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Board Grid Styling */
+.board {
+    display: grid;
+    grid-template-columns: repeat(3, 100px);
+    grid-template-rows: repeat(3, 100px);
+    gap: 5px;
+    margin-bottom: 20px;
+}
+
+.cell {
+    width: 100px;
+    height: 100px;
+    background-color: #eee;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+/* Hover effect for cells */
+.cell:hover {
+    background-color: #f0f0f0;
+}
+
+/* Winning animations */
+@keyframes highlightWin {
+    0% {
+        background-color: #ff6666;
+    }
+    50% {
+        background-color: #ffb3b3;
+    }
+    100% {
+        background-color: #ff6666;
+    }
+}
+
+/* Winning message styling */
+.win-message {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #333;
+    margin-top: 20px;
+    display: none;
+    animation: fadeIn 1s ease-in-out;
+}
+
+/* Restart button */
+.restart-btn {
+    padding: 10px 20px;
+    font-size: 1rem;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+.restart-btn:hover {
+    background-color: #45a049;
+}
+
+/* Turn indicator styling */
+.turn-indicator {
+    font-size: 1.2rem;
+    color: #333;
+}
+
+/* Background animation */
+@keyframes backgroundAnimation {
+    0% {
+        background: linear-gradient(45deg, #ff6a00, #ffcc00);
+    }
+    50% {
+        background: linear-gradient(45deg, #00c6ff, #0072ff);
+    }
+    100% {
+        background: linear-gradient(45deg, #ff6a00, #ffcc00);
+    }
+}
+
+/* Fade-in animation for win message */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+/* Confetti canvas */
+#confetti-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    display: none;
+}
+.winning-cell {
+    background-color: #4CAF50; /* Green background for winning cells */
+    animation: winHighlight 1s ease-out forwards;
+}
+
+@keyframes winHighlight {
+    from {
+        transform: scale(1);
+    }
+    to {
+        transform: scale(1.2);
+        background-color: #4CAF50; /* Change color when win */
+    }
+}
+
+.winning-animation {
+    animation: winningText 1s ease-out forwards;
+}
+
+@keyframes winningText {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}

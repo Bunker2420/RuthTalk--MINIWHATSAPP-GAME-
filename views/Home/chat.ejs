@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chat App</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/chat.css">
+</head>
+<body>
+    <% if (success_msg && success_msg.length) { %>
+        <div class="flash success">
+          <span><%= success_msg %></span>
+          <button class="close-btn" onclick="this.parentElement.style.display='none'">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+      <% } %>
+    
+     <!--Listing does not exist flash-->
+     <% if (error_msg && error_msg.length) { %>
+      <div class="flash error">
+        <span><%= error_msg %></span>
+        <button class="close-btn" onclick="this.parentElement.style.display='none'">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+    <% } %>
+    <header>
+        💬 "Ruthwick's Hub: Where Words Become Magic... Let's Chat!"
+        <form action="/logout">
+            <button class="logout-button"><i class="fa-solid fa-right-from-bracket"></i>logout</button>
+        </form>
+    </header>
+
+    <div class="chat-container">
+        <h2>Welcome <%= username %></h2>
+
+        <div class="search-box">
+            <input type="text" id="search" placeholder="Search users...">
+            <button><i class="fa-solid fa-magnifying-glass"></i></button>
+        </div>
+
+        <div class="user-list" id="userList">
+            <% users.forEach(user => { %>
+                <!-- Using 'onclick' to call startChat and passing receiver username -->
+                <div class="user" onclick="startChat('<%= user.username %>')">
+                    <%= user.username %>
+                </div>
+            <% }) %>
+        </div>
+    </div>
+    <div class="games-promo">
+        🎮 Got bored chatting? Take a break and play a game!  
+        <a href="/games"><button class="games-btn">Play Games</button></a>
+    </div>
+    
+
+    <footer>
+        <div class="footer-content">
+            &copy; 2025 ChatApp | Made with ❤️
+            <div>📩 For any queries, contact us on:</div>
+            <div class="socials">
+                <a href="https://instagram.com" target="_blank">
+                    <img src="/images/pngtree-instagram-social-platform-icon-png-image_8704818.png" alt="Instagram">
+                </a>
+                <a href="https://facebook.com" target="_blank">
+                    <img src="/images/pngtree-facebook-icon-social-media-png-image_9015415.png" alt="Facebook">
+                </a>
+                <a href="https://wa.me/yourNumber" target="_blank">
+                    <img src="/images/whatsapp_PNG95154.png" alt="WhatsApp">
+                </a>
+            </div>
+        </div>
+    </footer>
+    
+    <div class="emoji-bg"></div>
+    <script src="/socket.io/socket.io.js"></script>
+    <!-- Include the necessary JavaScript files -->
+    <script src="/js/chat.js"></script>
+    <script>
+        const senderUsername = "<%= username %>";
+        console.log(senderUsername);
+        // Function to start chat when a user is clicked
+        function startChat(receiverUsername) {
+            // Store the receiver username and sender username (from session)
+            localStorage.setItem('senderUsername', senderUsername);  // Store sender username in localStorage
+            localStorage.setItem('receiverUsername', receiverUsername);  // Store receiver username in localStorage
+
+            // Redirect to the chat page (or refresh for a new chat window)
+            window.location.href = `/chat/${receiverUsername}`;
+// You can modify this as needed to match your page structure
+        }
+        setTimeout(() => {
+    const flashMessages = document.querySelectorAll('.flash');
+    flashMessages.forEach(flash => {
+      flash.style.transition = "opacity 0.5s ease";
+      flash.style.opacity = "0";
+      setTimeout(() => {
+        flash.remove(); // Optional: fully remove after fade out
+      }, 500);
+    });
+  }, 10000); 
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dino Game</title>
+  <link rel="stylesheet" href="/css/dino.css" />
+</head>
+<body>
+    <header>
+        <h1>Dino Game</h1>
+        <h2 class="beta-note">This is a beta version – there may be some glitches</h2>
+        <p class="info-message">
+          Enjoy the classic Dino jump game with enhanced visuals and sound!  
+          Use <strong>Space</strong> or <strong>Arrow Up</strong> to jump.  
+          Press <strong>P</strong> or click Pause to stop anytime.
+        </p>
+      </header>
+  <div class="game-container" id="game">
+    <div class="dino" id="dino"></div>
+    <div class="obstacle" id="obstacle"></div>
+    <div class="ground"></div>
+  </div>
+
+  <div class="score-container">
+    <p id="score" style="margin-left: 20px;">Score: 0</p>
+    <button class="restart-btn" id="restartBtn">Restart</button>
+    <button id="pauseBtn" class="pause-btn">⏸ Pause</button>
+  </div>
+
+  <audio id="jumpSound" src="jump.mp3" preload="auto"></audio>
+  <audio id="gameOverSound" src="gameover.mp3" preload="auto"></audio>
+ <form action="/games">
+    <button class="resume-btn">Back to Games</button>
+ </form>
+  <script src="/js/dino.js"></script>
+</body>
+</html>
