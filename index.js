@@ -79,6 +79,11 @@ app.get('/', (req, res) => {
     res.render('User/Login.ejs');
 });
 
+app.get('/forgot',(req,res)=>{
+    res.render('forgot-password.ejs');
+});
+
+
 app.get('/SignUp', (req, res) => {
     try
     {
@@ -114,6 +119,8 @@ app.post('/SignUp',async(req,res)=>{
 app.get('/login', (req, res) => {
     res.render('User/Login.ejs');
 });
+
+
 
 app.post('/login', passport.authenticate("local", {
     failureRedirect: "/login",
